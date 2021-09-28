@@ -1,0 +1,99 @@
+{
+  "name": "electronreactapp",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "webpack --config webpack.common.js --watch",
+    "build": "webpack --config webpack.prod.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "make:linux": "electron-builder --linux",
+    "make:macos": "electron-builder --mac",
+    "make:win": "electron-builder --win --x64",
+    "buildtest": "electron-builder build --win --publish never",
+    "deploytest": "electron-builder build --win --publish always"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/NaimHamidii/electrontest.git"
+  },
+  "keywords": [],
+  "author": "n h",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "electron": "^14.0.1",
+    "electron-builder": "^22.11.7",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "electron-updater": "^4.3.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.41.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "build": {
+    "productName": "Electron",
+    "appId": "com.nh.electrontest",
+    "copyright": "NH 2021",
+    "files": [
+      "build/**/*",
+      "index.html",
+      "assets/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": true,
+      "displayLanguageSelector": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/images/logo.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 430,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "icon": "assets/images/logo.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Development"
+    }
+  }
+}
