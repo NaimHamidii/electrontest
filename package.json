@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "test",
   "main": "main.js",
-  "repository": "https://github.com/NaimHamidii/electrontest.git",
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/NaimHamidii/electrontest.git"
+  },
   "scripts": {
     "start": "electron .",
     "watch": "webpack --config webpack.common.js --watch",
@@ -12,9 +15,7 @@
     "dist": "electron-builder",
     "make:linux": "electron-builder --linux",
     "make:macos": "electron-builder --mac",
-    "make:win": "electron-builder --win --x64 --publish always",
-    "buildtest": "electron-builder build --win --publish never",
-    "deploytest": "electron-builder build --win --publish always"
+    "make:win": "electron-builder --win --x64 --publish always"
   },
   "keywords": [],
   "author": "n h",
