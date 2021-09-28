@@ -15,7 +15,8 @@
     "dist": "electron-builder",
     "make:linux": "electron-builder --linux",
     "make:macos": "electron-builder --mac",
-    "make:win": "electron-builder --win --x64 --publish always"
+    "buildt": "electron-builder build --win --publish never",
+    "deployt": "electron-builder build --win --publish always" 
   },
   "keywords": [],
   "author": "n h",
