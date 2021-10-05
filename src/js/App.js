@@ -17,6 +17,7 @@ export default function App() {
             <button onClick={sendNotificationHandler}>Send notification</button>
             <button onClick={restartApp}>Restart app</button>
             <p>new test</p>
+            <p>new version</p>
         </>
     )
 }
