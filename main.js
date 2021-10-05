@@ -19,7 +19,7 @@ function createWindow(){
         autoUpdater.checkForUpdatesAndNotify();
     });
 
-    // win.webContents.openDevTools();
+    win.webContents.openDevTools();
 }
 
 app.whenReady()
@@ -32,22 +32,6 @@ app.whenReady()
 ipcMain.on('notify', (e, message) => {
     // new Notification({title: 'Notification', body: message}).show();
     new Notification({title: 'Version current', body: app.getVersion()}).show();
-})
-
-ipcMain.on('openAoCProject', () => {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: false,
-            contextIsolation: true,
-            preload: path.join(__dirname, 'preload.js'),
-        },
-    });
-
-    win.loadURL('https://github.com/');
-
-    // win.webContents.openDevTools();
 })
 
 app.on('window-all-closed', () => {
@@ -68,16 +52,19 @@ ipcMain.on('app_version', (event) => {
 });
 
 ipcMain.on('restart_app', () => {
+    console.log('restarting');
     autoUpdater.quitAndInstall();
 });
 
 
 autoUpdater.on('update-available', () => {
     mainWindow.webContents.send('update_available');
+    console.log('new update available');
     new Notification({title: 'Update available', body: "Update available new version"}).show();
 });
 
 autoUpdater.on('update-downloaded', () => {
     mainWindow.webContents.send('update_downloaded');
+    console.log('downloaded new version.');
     new Notification({title: 'Update downloaded', body: "Dwonloaded new version!"}).show();
 });
