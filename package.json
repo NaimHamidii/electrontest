@@ -15,8 +15,8 @@
     "dist": "electron-builder",
     "make:linux": "electron-builder --linux",
     "make:macos": "electron-builder --mac",
-    "buildt": "electron-builder build --win --publish never",
-    "deployt": "electron-builder build --win --publish always" 
+    "make:win": "electron-builder --win --publish never",
+    "deployt": "electron-builder build --win --publish always"
   },
   "keywords": [],
   "author": "n h",
@@ -53,14 +53,17 @@
       "preload.js"
     ],
     "nsis": {
+      "license": "LICENSE.txt",
       "allowToChangeInstallationDirectory": true,
       "oneClick": false,
       "perMachine": true,
       "displayLanguageSelector": true,
       "createDesktopShortcut": true,
-      "runAfterFinish": true
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": true      
     },
     "mac": {
+      "target": "dmg",
       "category": "public.app-category.developer-tools",
       "icon": "assets/images/logo.png",
       "hardenedRuntime": true,
